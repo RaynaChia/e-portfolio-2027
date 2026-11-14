@@ -11,7 +11,7 @@
    ========================================================= */
 :root {
   --bg: #ffffff;            /* page background */
-  --surface: #f3f4f6;       /* project panels, image placeholders */
+  --surface: #f3f4f6;       /* project panels, img placeholders */
   --text: #1f2933;          /* main text */
   --muted: #5f6b7a;         /* secondary text */
   --accent: #2b5fa8;        /* links, buttons, highlights */
@@ -44,7 +44,7 @@ h3 { font-size: 1.25rem; }
 p { margin: 0 0 1em; max-width: 68ch; }
 a { color: var(--accent); }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-img { max-width: 100%; display: block; }
+img  { max-width: 100%; display: block; }
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space); }
 section { padding: calc(var(--space) * 3) 0; border-top: 1px solid var(--border); }
 .muted { color: var(--muted); }
@@ -77,7 +77,7 @@ section { padding: calc(var(--space) * 3) 0; border-top: 1px solid var(--border)
 .button.primary { background: var(--accent); color: #fff; }
 .button.secondary { color: var(--accent); background: transparent; }
 
-/* Image placeholder: replace each .placeholder div with an <img> */
+/* img placeholder: replace each .placeholder div with an <img > */
 .placeholder {
   background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius);
   min-height: 220px; display: flex; align-items: center; justify-content: center;
@@ -121,7 +121,7 @@ section { padding: calc(var(--space) * 3) 0; border-top: 1px solid var(--border)
 }
 .slides::-webkit-scrollbar { display: none; }
 .slides figure { flex: 0 0 100%; scroll-snap-align: start; margin: 0; }
-.slides img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); }
+.slides img  { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); }
 .slides figcaption { color: var(--muted); font-size: .9rem; margin-top: .5rem; }
 .slide-controls { display: flex; justify-content: space-between; align-items: center; margin-top: .75rem; }
 .slide-controls button {
@@ -131,13 +131,13 @@ section { padding: calc(var(--space) * 3) 0; border-top: 1px solid var(--border)
 .slide-count { color: var(--muted); font-size: .9rem; }
 
 /* ========== Lightbox ========== */
-.slides img, .zoomable { cursor: zoom-in; }
+.slides img , .zoomable { cursor: zoom-in; }
 .lightbox {
   border: 0; padding: 0; background: transparent;
   max-width: 95vw; max-height: 95vh;
 }
 .lightbox::backdrop { background: rgba(0, 0, 0, .85); }
-.lightbox img {
+.lightbox img  {
   max-width: 95vw; max-height: 90vh; display: block;
   border-radius: var(--radius); cursor: zoom-out;
 }
@@ -198,7 +198,7 @@ section { padding: calc(var(--space) * 3) 0; border-top: 1px solid var(--border)
         <a class="button secondary" href="Chiavario.Resume.2027.pdf" download>Download résumé</a>
       </div>
     </div>
-    <image src="Images/headshot.png" alt="Photo of Rayna">
+    <img  src="headshot.png" alt="Photo of Rayna">
   </div>
 </section>
 
@@ -284,15 +284,15 @@ section { padding: calc(var(--space) * 3) 0; border-top: 1px solid var(--border)
           <div class="slideshow">
               <div class="slides">
                   <figure>
-                    <image src="Images/Dashboard1.PNG" alt="Dashboard overview" class="zoomable">
+                    <img src="Dashboard1.PNG" alt="Dashboard overview" class="zoomable">
                     <figcaption>Overview: Live stats from database</figcaption>
                   </figure>
                   <figure>
-                    <image src="Images/Dashboard2.PNG" alt="Service calendar showing scheduled vists" class="zoomable">
+                    <img src="Dashboard2.PNG" alt="Service calendar showing scheduled vists" class="zoomable">
                     <figcaption>Service calendar: scheduled vists and appointments at a glance</figcaption>
                   </figure>
                   <figure>
-                    <image src="Images/Dashboard3.PNG" alt="Payments tab showing invoice and payment status">
+                    <img src="Dashboard3.PNG" alt="Payments tab showing invoice and payment status">
                     <figcaption>Payments: invoice status and payment tracking</figcaption> 
                   </figure>
                 </div>
@@ -333,12 +333,12 @@ section { padding: calc(var(--space) * 3) 0; border-top: 1px solid var(--border)
       </div>
         <div class="media">
           <figure>
-            <image src="Images/Classdiagram.PNG" alt="UML class diagram for the ODU Smart Package System" class="zoomable" style="aspect-ratio: auto;"></image>
+            <img src="Classdiagram.PNG" alt="UML class diagram for the ODU Smart Package System" class="zoomable" style="aspect-ratio: auto;"></image>
             <figcaption class="muted">Class diagram: classes, attributes, operations, and multiplicities</figcaption>
           </figure>
 
           <figure>
-              <image src="Images/placeholder.PNG" alt="UML sequence diagram for the Pick Up Package use case" class="zoomable" style="aspect-ratio: auto;"></image>
+              <img src="placeholder.PNG" alt="UML sequence diagram for the Pick Up Package use case" class="zoomable" style="aspect-ratio: auto;"></image>
               <figcaption class="muted">Sequence diagram: interactions during package pickup</figcaption>
               <p class="project-links"><a href="[app-proposal.pdf]">Read the full proposal (PDF)</a></p>
           </figure>
@@ -502,7 +502,7 @@ section { padding: calc(var(--space) * 3) 0; border-top: 1px solid var(--border)
 
 <dialog class="lightbox" aria-label="Enlarged image">
   <button class="lightbox-close" aria-label="Close">×</button>
-  <img src="" alt="">
+  <img  src="" alt="">
 </dialog>
 
 <script>
@@ -521,11 +521,11 @@ document.querySelectorAll('.slideshow').forEach(show => {
 });
 
 const lightbox = document.querySelector('.lightbox');
-const lightboxImg = lightbox.querySelector('img');
-document.querySelectorAll('.slides img, .zoomable').forEach(img => {
-  img.addEventListener('click', () => {
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
+const lightboximg  = lightbox.querySelector('img ');
+document.querySelectorAll('.slides img , .zoomable').forEach(img  => {
+  img .addEventListener('click', () => {
+    lightboximg .src = img .src;
+    lightboximg .alt = img .alt;
     lightbox.showModal();
   });
 });
