@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rayna Chiavario | Information Systems Portfolio</title>
+<meta name="description" content="Portfolio of Rayna, BSBA Information Systems student at Old Dominion University and owner of Paw & Play Co.">
+<style>
+/* =========================================================
+   STYLE CONTROLS: change these to restyle the whole site
+   ========================================================= */
+:root {
+  --bg: #ffffff;            /* page background */
+  --surface: #f3f4f6;       /* project panels, image placeholders */
+  --text: #1f2933;          /* main text */
+  --muted: #5f6b7a;         /* secondary text */
+  --accent: #2b5fa8;        /* links, buttons, highlights */
+  --border: #d9dee5;        /* lines and outlines */
+
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-heading: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --max-width: 1040px;      /* content width */
+  --radius: 6px;            /* corner rounding */
+  --space: 1.5rem;          /* base spacing unit */
+}
+
+/* ========== Base ========== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+h1, h2, h3 { font-family: var(--font-heading); line-height: 1.2; margin: 0 0 .5em; }
+h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+h3 { font-size: 1.25rem; }
+p { margin: 0 0 1em; max-width: 68ch; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+img { max-width: 100%; display: block; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space); }
+section { padding: calc(var(--space) * 3) 0; border-top: 1px solid var(--border); }
+.muted { color: var(--muted); }
+
+/* ========== Header / nav ========== */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.site-header .container {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space); min-height: 64px; flex-wrap: wrap;
+}
+.logo { font-weight: 700; text-decoration: none; color: var(--text); }
+.site-nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 1.25rem; margin: 0; padding: 0; }
+.site-nav a { text-decoration: none; color: var(--text); }
+.site-nav a:hover { color: var(--accent); }
+
+/* ========== Hero ========== */
+.hero { padding: calc(var(--space) * 4) 0 calc(var(--space) * 3); border-top: 0; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: calc(var(--space) * 2); align-items: center; }
+@media (min-width: 760px) { .hero-grid { grid-template-columns: 1.4fr 1fr; } }
+.hero .tagline { font-size: 1.25rem; color: var(--muted); }
+.button-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space); }
+.button {
+  display: inline-block; padding: .7rem 1.2rem; border-radius: var(--radius);
+  text-decoration: none; font-weight: 600; border: 2px solid var(--accent);
+}
+.button.primary { background: var(--accent); color: #fff; }
+.button.secondary { color: var(--accent); background: transparent; }
+
+/* Image placeholder: replace each .placeholder div with an <img> */
+.placeholder {
+  background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius);
+  min-height: 220px; display: flex; align-items: center; justify-content: center;
+  color: var(--muted); text-align: center; padding: var(--space); font-size: .95rem;
+}
+.headshot { aspect-ratio: 1 / 1; min-height: 0; }
+
+/* ========== Skills ========== */
+.skill-groups { display: grid; gap: var(--space); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.skill-groups ul { margin: 0; padding-left: 1.1rem; }
+
+/* ========== Projects ========== */
+.project { padding: calc(var(--space) * 2) 0; border-bottom: 1px solid var(--border); }
+.project:last-child { border-bottom: 0; }
+.project-summary { font-size: 1.125rem; color: var(--muted); }
+.project-grid { display: grid; gap: calc(var(--space) * 1.5); grid-template-columns: 1fr; margin-top: var(--space); }
+@media (min-width: 860px) { .project-grid { grid-template-columns: 1.2fr 1fr; } }
+.case h4 { margin: 1.25em 0 .35em; font-size: 1rem; }
+.case h4:first-child { margin-top: 0; }
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: var(--space) 0 0; }
+.tags li { border: 1px solid var(--border); border-radius: 999px; padding: .2rem .75rem; font-size: .875rem; }
+.media { display: grid; gap: 1rem; }
+.project-links { margin-top: 1rem; }
+
+/* ========== Experience / education ========== */
+.timeline-item { display: grid; grid-template-columns: 1fr; gap: .25rem 2rem; padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+.timeline-item:last-child { border-bottom: 0; }
+@media (min-width: 760px) { .timeline-item { grid-template-columns: 200px 1fr; } }
+.timeline-item .when { color: var(--muted); }
+.timeline-item ul { margin: .25rem 0 0; padding-left: 1.1rem; }
+
+/* ========== Contact / footer ========== */
+.contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+.site-footer { padding: var(--space) 0; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; }
+
+/* ========== Slideshow ========== */
+.slideshow { position: relative; }
+.slides {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  scroll-behavior: smooth; gap: 1rem; scrollbar-width: none;
+}
+.slides::-webkit-scrollbar { display: none; }
+.slides figure { flex: 0 0 100%; scroll-snap-align: start; margin: 0; }
+.slides img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); }
+.slides figcaption { color: var(--muted); font-size: .9rem; margin-top: .5rem; }
+.slide-controls { display: flex; justify-content: space-between; align-items: center; margin-top: .75rem; }
+.slide-controls button {
+  background: var(--bg); color: var(--accent); border: 2px solid var(--accent);
+  border-radius: var(--radius); padding: .4rem .9rem; font-size: 1rem; cursor: pointer;
+}
+.slide-count { color: var(--muted); font-size: .9rem; }
+
+/* ========== Lightbox ========== */
+.slides img, .zoomable { cursor: zoom-in; }
+.lightbox {
+  border: 0; padding: 0; background: transparent;
+  max-width: 95vw; max-height: 95vh;
+}
+.lightbox::backdrop { background: rgba(0, 0, 0, .85); }
+.lightbox img {
+  max-width: 95vw; max-height: 90vh; display: block;
+  border-radius: var(--radius); cursor: zoom-out;
+}
+.lightbox-close {
+  position: fixed; top: 1rem; right: 1rem;
+  background: #fff; color: #000; border: 0; border-radius: 50%;
+  width: 2.5rem; height: 2.5rem; font-size: 1.5rem; cursor: pointer;
+
+}
+.prototype-button {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: #c8522a; color: #fff; border: 0;
+  border-radius: 999px; padding: .8rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(200, 82, 42, .3);
+  transition: transform .15s, box-shadow .15s;
+  justify-self: start;
+  align-self: start;
+  width: fit-content;
+  min-height: 0;
+}
+.prototype-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(200, 82, 42, .4);
+}
+
+#about .container { max-width: 760px; }
+
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="#top">Rayna Chiavario</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1>Rayna Chiavario</h1>
+      <p class="tagline">Information Systems student at Old Dominion University and owner of Paw &amp; Play Co. I build systems that solve real business problems.</p>
+      <div class="button-row">
+        <a class="button primary" href="#projects">View my projects</a>
+        <a class="button secondary" href="Chiavario.Resume.2027.pdf" download>Download résumé</a>
+      </div>
+    </div>
+    <image src="Images/headshot.png" alt="Photo of Rayna">
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="container">
+    <h2>About me</h2>
+    <p>I'm Rayna, a BSBA Information Systems student at Old Dominion University, graduating in May 2027. I bring a mix of leadership, entrepreneurship, and technical skills.</p>
+    <p>My extensive retail management experience taught me how to lead teams, manage operations, and solve problems under pressure. I also own and operate Paw &amp; Play Co., a pet care company in Virginia Beach.</p>
+    <p>Combined with coursework in networking, IT, finance, and Business, these experiences have prepared me to connect technology with real business needs, and I'm excited to bring that perspective to my next role.</p>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="container">
+    <h2>Skills</h2>
+    <div class="skill-groups">
+      <div>
+        <h3>Networking and security</h3>
+        <ul>
+          <li>Network design and cabling</li>
+          <li>VLANs and subnetting</li>
+          <li>Firewall configuration (pfSense)</li>
+          <li>Wireshark</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Data and development</h3>
+        <ul>
+          <li>Supabase (PostgreSQL) and SQL</li>
+          <li>HTML, CSS, JavaScript</li>
+          <li>Netlify hosting and DNS</li>
+          <li>Stripe integration</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Business and leadership</h3>
+        <ul>
+          <li>Team leadership and training</li>
+          <li>Requirements and project planning</li>
+          <li>Budgeting</li>
+          <li>Client relations</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Certifications</h3>
+        <ul>
+          <li>[Place Holder]</li>
+          <li>[Place Holder]</li>
+          <li>[Place Holder]</li>
+        <ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="container">
+    <h2>Projects</h2>
+
+    <!-- ===== Project 1 ===== -->
+    <article class="project" id="business-systems">
+      <h3>Paw &amp; Play Co. Business Systems</h3>
+      <p class="project-summary">A custom dashboard, client portal, and sitter portal that run my pet care business.</p>
+      <div class="project-grid">
+        <div class="case">
+          <h4>The problem</h4>
+          <p>As Paw &amp; Play Co. grew, client information (pets, services, status, contracts, and business notes) was scattered and hard to manage. Off-the-shelf software was expensive and included more than I needed.</p>
+          <h4>What I did</h4>
+          <p>I designed and built a private business dashboard using Claude Code, directing the features, data structure, and testing myself. I designed two database tables, one for client records (contact info, pet, breed, service, status, and contract) and one for tagged business notes. The first version stored data in the browser, which risked data loss and didn't sync between devices, so I migrated it to a Supabase database. I kept the dashboard's tables separate from my website's tables so the two systems couldn't interfere with each other. The overview page calculates live stats (total, active, and pending clients, plus note count) directly from the database.</p>
+          <h4>What happened</h4>
+          <p>I now manage all client records and business notes in one place that I can access from any device, with data stored securely in a database instead of the browser. The dashboard became part of a larger system that includes my website, client portal, and sitter portal, and it's the foundation for a planned mobile app that will extend tracking beyond the browser.</p>
+          <ul class="tags" aria-label="Tools used">
+            <li>Claude Code</li><li>Supabase</li><li>SQL</li><li>HTML/CSS/JS</li><li>Netlify</li><li>Stripe</li>
+          </ul>
+        </div>
+        <div class="media">
+          <div class="placeholder">Walk Through Video</div>
+          <p class="muted">Live demo available on request.</p>
+
+          <div class="slideshow">
+              <div class="slides">
+                  <figure>
+                    <image src="Images/Dashboard1.PNG" alt="Dashboard overview" class="zoomable">
+                    <figcaption>Overview: Live stats from database</figcaption>
+                  </figure>
+                  <figure>
+                    <image src="Images/Dashboard2.PNG" alt="Service calendar showing scheduled vists" class="zoomable">
+                    <figcaption>Service calendar: scheduled vists and appointments at a glance</figcaption>
+                  </figure>
+                  <figure>
+                    <image src="Images/Dashboard3.PNG" alt="Payments tab showing invoice and payment status">
+                    <figcaption>Payments: invoice status and payment tracking</figcaption> 
+                  </figure>
+                </div>
+                <div class="slide-controls">
+                  <button class="prev" aria-label="Previous slide">Previous</button>
+                  <span class="slide-count"></span>
+                  <button class="next" aria-label="Next slide">Next</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== Project 2 ===== -->
+    <article class="project" id="smart package system">
+      <h3>ODU Smart Package System: System Analysis and Design</h3>
+      <p class="project-summary">A complete analysis and design package for a smart locker system that manages student package delivery at Old Dominion University</p>
+      <div class="project-grid">
+        <div class="case">
+          <h4>The problem</h4>
+          <p>ODU needed a better way to manage packages for on-campus students. Instead of delivering to residence halls, carriers would place packages in secure smart lockers across campus. The systme had to track students, packages, lockers, pickup codes, and delivery issues, while keeping packages secure and lockers available</p>
+          <h4>What I did</h4>
+          <p>Over a semester-long series of assignments, I took the system from initial requirements to detailed design:
+          <ul class="case-list">
+            <li><strong>Stakeholder analysis</strong>: used Onion Model to identify stakeholders, from students, drivers, and mail staff to Housing, IT, carriers, Public Safety, and complianc.</li>
+            <li><strong>Design thinking</strong>: emphazied with students who miss pickup deadlines and proposed a new Proxy Pickup feature, which lets a student authorize a trusted person to retrieve a specific package with their own code.</li>
+            <li><strong>Use case modeling</strong>: built a use case diagram, including a Time actor for expiring overdue packages, and wrote a detailed narrative for the Retrieve Package use case.</li>
+            <li><strong>Activity diagram</strong>: modeled the pickup workflow, including the decision points.</li>
+            <li><strong>Non-functional requirements</strong>: defined specific, mneasurable requirements for the system, such as response time, security, and availability.</li>
+            <li><strong>Class diagram</strong>: designed the system's classes, attributes, operations, and relationships, with multiplicities.</li> 
+            <li><strong>Sequence diagram</strong>: showed how the student, kiosk, system, and locker interact during package pickup</li>
+            <li><strong>Unit test</strong>: wrote a unit test for a deposit function, covering both valid deposits and the negative-amount error case</li>
+          </ul>
+          </p>
+          <h4>What happened</h4>
+          <p>I produced a complete, connected design for the system, where each diagram builds on the previos one, from who the users are to how the code is tested.</p>
+          <ul class="tags" aria-label="Tools used">
+            <li>System Analysis</li><li>UML</li><li>Requirements gathering</li><li>Use case modeling</li><li>Class design</li><li>Unit testing</li>
+          </ul>
+      </div>
+        <div class="media">
+          <figure>
+            <image src="Images/Classdiagram.PNG" alt="UML class diagram for the ODU Smart Package System" class="zoomable" style="aspect-ratio: auto;"></image>
+            <figcaption class="muted">Class diagram: classes, attributes, operations, and multiplicities</figcaption>
+          </figure>
+
+          <figure>
+              <image src="Images/placeholder.PNG" alt="UML sequence diagram for the Pick Up Package use case" class="zoomable" style="aspect-ratio: auto;"></image>
+              <figcaption class="muted">Sequence diagram: interactions during package pickup</figcaption>
+              <p class="project-links"><a href="[app-proposal.pdf]">Read the full proposal (PDF)</a></p>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== Project 3 ===== -->
+    <article class="project" id="app-proposal">
+      <h3>Paw &amp; Play Mobile App Proposal</h3>
+      <p class="project-summary">Fully functional business application that streamlines business and client operations.</p>
+      <div class="project-grid">
+        <div class="case">
+          <h4>The problem</h4>
+          <p>As Paw & Play Co. grew, client information (pets, services, status, contracts, and business notes) was scattered and hard to manage. Off-the-shelf software was expensive and included more than I needed, so I wanted one organized, affordable place to track clients and operations.</p>
+          <h4>What I did</h4>
+          <p>I designed and built a private business dashboard using Claude Code, directing the features, data structure, and testing myself. I designed two database tables, one for client records (contact info, pet, breed, service, status, and contract) and one for tagged business notes. The first version stored data in the browser, which risked data loss and didn't sync between devices, so I migrated it to a Supabase database. I kept the dashboard's tables separate from my website's tables so the two systems couldn't interfere with each other. The overview page calculates live stats (total, active, and pending clients, plus note count) directly from the database.</p>
+          <h4>What happened</h4>
+          <p>I now manage all client records and business notes in one place that I can access from any device, with data stored securely in a database instead of the browser. The dashboard became part of a larger system that includes my website, client portal, and sitter portal, and it's the foundation for a planned mobile app that will extend tracking beyond the browser.</p>
+          <ul class="tags" aria-label="Tools used">
+            <li>Figma</li><li>Claude Code</li><li>Supabase</li><li>GitHub SQL</li>
+          </ul>
+        </div>
+          <div class="media">
+            <div class="placeholder">System architecture diagram</div>
+              <p class="project-links"><a href="[app-proposal.pdf]">Read the full proposal (PDF)</a></p>
+              </p>
+              <p class="project-links">
+                <a class="button prototype-button" href="https://poll-listen-34956454.figma.site/" target="_blank" rel="noopener">Try the interactive prototype</a>
+              </p>
+          </div> 
+        </div>
+    </article>
+
+    <!-- ===== Project 4 ===== -->
+    <article class="project" id="wireshark-lab">
+      <h3>Network Traffic Analysis with Wireshark</h3>
+      <p class="project-summary">[One-line summary of the lab.]</p>
+      <div class="project-grid">
+        <div class="case">
+          <h4>The problem</h4>
+          <p>[What you set out to examine or test.]</p>
+          <h4>What I did</h4>
+          <p>[Your setup, what you captured, and how you analyzed it.]</p>
+          <h4>What happened</h4>
+          <p>[What you found and what you learned.]</p>
+          <ul class="tags" aria-label="Tools used">
+            <li>Wireshark</li><li>[Tool]</li><li>[Tool]</li>
+          </ul>
+        </div>
+        <div class="media">
+          <div class="placeholder">Lab setup diagram</div>
+          <div class="placeholder">Packet capture screenshot</div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="container">
+    <h2>Experience and education</h2>
+
+    <div class="timeline-item">
+      <div class="when">2026 – Present</div>
+      <div>
+        <h3>Owner, Paw &amp; Play Co.</h3>
+        <p class="muted">Virginia Beach, VA</p>
+        <ul>
+          <li>Founded and run a pet care and dog training business with six service lines, handling operations, finance, marketing, and client relations.</li>
+          <li>Designed and launched a full-stack web platform with a client portal, sitter portal, live availability calendar, and photo uploads.</li>
+          <li>Managed the DNS migration from Porkbun to Netlify, set up business email on Zoho Mail, and planned a Zoho Calendar–Supabase integration to sync scheduling data.</li>
+          <li>Developed the brand identity and all marketing materials, including the website, brochure, flyers, business cards, and social media assets.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="when">2025 – 2026</div>
+      <div>
+        <h3>Shift Lead, Walgreens</h3>
+        <p class="muted">Virginia Beach, VA</p>
+        <ul>
+          <li>Supervised store operations and led teams of 7 associates per shift, assigning tasks to meet service, sales, and productivity goals.</li>
+          <li>Used the point-of-sale system and handheld inventory devices to process transactions, run price changes, and track stock levels.</li>
+          <li>Monitored inventory, placed replenishment orders, and carried out planogram updates to keep products available and reduce out-of-stocks.</li>
+          <li>Enforced loss prevention and compliance procedures, including regulated product sales and safety standards, to reduce shrink and risk.</li>
+          <li>Trained and onboarded new associates on store systems, procedures, and customer service standards.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="when">2020 - 2021</div>
+      <div>
+        <h3>Store Manager, Journeys</h3>
+        <p class="muted">Virginia Beach, VA</p>
+        <ul>
+          <li>Managed daily financial irregularities and inventory losses, reducing discrepancies by 15%.</li>
+          <li>Managed payroll budgets and built staff schedules that matched labor hours to traffic patterns and sales forecasts.</li>
+          <li>Supervised employee performance, addressed challenges, and improved workflow to achieve organizational objectives, increasing overall team performance by 20%.</li>
+          <li>Enhanced retail space aesthetics through refined merchandising strategies leading to a 13% increase in plus-one purchases.</li>
+          <li>Mentored sales personnel on product details, incentive programs, and sales methodologies, leading to a 37% increase in customer conversion and a 10% growth in sales revenue.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="when">Expected May 2027</div>
+      <div>
+        <h3>BSBA, Information Systems</h3>
+        <p class="muted">Old Dominion University</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>I'm looking for opportunities starting in 2027. I'd love to hear from you.</p>
+    <ul class="contact-list">
+      <li>Email: <a href="mailto:raynaleechiavario@gmail.com">raynaleechiavario@gmail.com</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/rayna-chiavario-connect/">https://www.linkedin.com/in/rayna-chiavario-connect/</a></li>
+      <li>Business: <a href="https://pawplayco.net">pawplayco.net</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">© 2026 Rayna Chiavario</div>
+</footer>
+
+<dialog class="lightbox" aria-label="Enlarged image">
+  <button class="lightbox-close" aria-label="Close">×</button>
+  <img src="" alt="">
+</dialog>
+
+<script>
+document.querySelectorAll('.slideshow').forEach(show => {
+  const track = show.querySelector('.slides');
+  const count = show.querySelector('.slide-count');
+  const total = track.children.length;
+  const current = () => Math.round(track.scrollLeft / track.clientWidth);
+  const update = () => { count.textContent = `${current() + 1} / ${total}`; };
+  show.querySelector('.prev').addEventListener('click', () =>
+    track.scrollTo({ left: (current() - 1) * track.clientWidth }));
+  show.querySelector('.next').addEventListener('click', () =>
+    track.scrollTo({ left: (current() + 1) * track.clientWidth }));
+  track.addEventListener('scroll', update);
+  update();
+});
+
+const lightbox = document.querySelector('.lightbox');
+const lightboxImg = lightbox.querySelector('img');
+document.querySelectorAll('.slides img, .zoomable').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.showModal();
+  });
+});
+lightbox.addEventListener('click', () => lightbox.close());
+
+</script>
+
+</body>
+</html>
